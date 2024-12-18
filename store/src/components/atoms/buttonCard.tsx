@@ -1,5 +1,9 @@
 import styles from "./buttonCard.module.css";
 
-export const ButtonCard = ({ text }: { text: string }) => {
-	return <button className={styles.button}>{text}</button>;
+export const ButtonCard = ({ text, action, type = "button" }: { text: string; action?: () => void; type?: "button" | "submit" }) => {
+	return (
+		<button className={styles.button} onClick={action} type={type}>
+			{text}
+		</button>
+	);
 };

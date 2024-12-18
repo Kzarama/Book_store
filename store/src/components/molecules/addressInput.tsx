@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { IStatus } from "../../assets/interfaces";
 import { updateAddressService } from "../../services/user";
 import styles from "./addressInput.module.css";
+import GlobalContext from "../../context/GlobalState";
 
 export const AddressInput = ({ address }: { address: string | undefined }) => {
 	const [newAddress, setNewAddress] = useState<string | undefined>(undefined);
 	const [statusUpdateAddress, setStatusUpdateAddress] = useState<IStatus>();
+	const { state } = useContext(GlobalContext);
 
 	const statusText = () => {
 		switch (statusUpdateAddress?.status) {
@@ -25,8 +27,8 @@ export const AddressInput = ({ address }: { address: string | undefined }) => {
 	};
 
 	const handleUpdateAddress = () => {
-		if (newAddress) {
-			updateAddressService("email", newAddress).then((response) => {
+		if (newAddress && state.user?.token) {
+			updateAddressService(state.user.token, "email", newAddress).then((response) => {
 				if (response.status === 200) {
 					setStatusUpdateAddress({ status: "OK" });
 					toast.success("Dirección actualizada");

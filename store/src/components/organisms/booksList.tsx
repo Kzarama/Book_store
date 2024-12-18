@@ -14,14 +14,10 @@ function BooksList() {
 	}, []);
 
 	return (
-		<div className={styles.booksList}>
-			<h1 className={styles.booksList_title}>Lista de Libros</h1>
-
-			<div className={styles.booksList_content}>
-				{books?.map((book) => (
-					<BookCard key={book.id} book={book} />
-				))}
-			</div>
+		<div className={styles.booksList_content}>
+			{books?.map((book) => (
+				<BookCard key={book.id} book={book} />
+			))}
 		</div>
 	);
 }
