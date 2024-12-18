@@ -1,0 +1,50 @@
+@import "../../variables.css";
+
+.card {
+	padding: 10px 5px;
+	width: 200px;
+	height: 300px;
+	border: 1px solid var(--border_cards);
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	background: var(--bg_cards);
+}
+
+.card_title {
+	margin: 5px;
+	height: 45px;
+	text-align: center;
+	display: -webkit-box;
+	line-clamp: 2;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.card_price {
+	margin: 5px;
+}
+
+.card_author {
+	margin: 5px;
+	display: -webkit-box;
+	line-clamp: 2;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.card_image {
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+}
+
+.card_button {
+	margin: 5px;
+}

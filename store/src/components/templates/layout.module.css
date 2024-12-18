@@ -1,0 +1,8 @@
+@import "../../variables.css";
+
+.layout {
+	background: var(--background);
+	background: linear-gradient(138deg, rgba(42, 55, 73, 1) 0%, rgba(42, 55, 73, 1) 14%, rgba(17, 22, 28, 1) 100%);
+	color: var(--font_color);
+	min-height: 100vh;
+}

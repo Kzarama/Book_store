@@ -11,7 +11,7 @@ export const signinService = async (email: string, password: string) => {
 		if (response?.data) {
 			return response.data;
 		}
-	} catch (error) {
+	} catch (error: any) {
 		return error.response.data;
 	}
 };
@@ -26,20 +26,7 @@ export const signupService = async (name: string, email: string, password: strin
 		if (response?.data) {
 			return response.data;
 		}
-	} catch (error) {
-		return error.response.data;
-	}
-};
-
-export const getBooks = async () => {
-	try {
-		const response = await axios({
-			url: `${DEFAULT_ROUTE}/get_books`,
-		});
-		if (response?.data) {
-			return response.data;
-		}
-	} catch (error) {
+	} catch (error: any) {
 		return error.response.data;
 	}
 };
