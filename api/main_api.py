@@ -1,6 +1,7 @@
-from flask import Flask, request, Response
+from flask import Flask, request, Response, jsonify
 from flask_cors import CORS
 import json
+import base64
 
 app = Flask(__name__)
 
@@ -41,24 +42,59 @@ def signup():
     return Response(json.dumps(response_data), status=201)
 
 
+@app.route("/get_user/<string:email>")
+def get_user(email):
+    with open("user.json", "r") as file:
+        data = json.load(file)
+
+    json_data = json.dumps(data)
+
+    return Response(json_data, status=200)
+
+
 @app.route("/update_address", methods=["POST"])
 def update_address():
     token = request.get_json()["token"]
     address = request.get_json()["address"]
     if token == "qwerty":
-        return Response(f"{address} ok", status=200)
+
+        response_data = {
+            "message": "Registro correcto",
+            "status": 200,
+            "data": {
+                "address": address,
+            },
+        }
+
+        return Response(json.dumps(response_data), status=200)
     else:
         return Response("Error", status=401)
+
+
+def allowed_file(filename):
+    return (
+        "." in filename
+        and filename.rsplit(".", 1)[1].lower() in app.config["ALLOWED_EXTENSIONS"]
+    )
 
 
 @app.route("/update_photo", methods=["POST"])
 def update_photo():
-    token = request.get_json()["token"]
-    photo = request.get_json()["photo"]
-    if token == "qwerty":
-        return Response(f"{photo} ok", status=200)
-    else:
-        return Response("Error", status=401)
+    try:
+        file_data = request.json.get("fileBase64")
+        if not file_data:
+            return jsonify({"error": "No se recibió ningún archivo"}), 400
+        file_data = file_data.split(",")[1]
+        return (
+            jsonify(
+                {
+                    "message": "Archivo subido exitosamente",
+                }
+            ),
+            200,
+        )
+    except Exception as e:
+        return jsonify({"error": f"Error al procesar el archivo: {str(e)}"}), 500
 
 
 @app.route("/get_books")

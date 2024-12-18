@@ -1,3 +1,10 @@
+export interface User {
+	name: string;
+	email: string;
+	image: string;
+	address: string;
+}
+
 export interface Book {
 	id: string;
 	title: string;
