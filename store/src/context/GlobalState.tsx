@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useReducer } from "react";
+import React, { createContext, ReactNode, useReducer, useEffect } from "react";
 import { GlobalState } from "../assets/interfaces";
 import { ActionTypes, SET_LOADING, SET_USER } from "./ActionTypes";
 
@@ -33,7 +33,14 @@ const GlobalContext = createContext<{
 });
 
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
-	const [state, dispatch] = useReducer(globalReducer, initialState);
+	const savedState = sessionStorage.getItem("globalState");
+	const initialStateFromStorage = savedState ? JSON.parse(savedState) : initialState;
+
+	const [state, dispatch] = useReducer(globalReducer, initialStateFromStorage);
+
+	useEffect(() => {
+		sessionStorage.setItem("globalState", JSON.stringify(state));
+	}, [state]);
 
 	return <GlobalContext.Provider value={{ state, dispatch }}>{children}</GlobalContext.Provider>;
 };
