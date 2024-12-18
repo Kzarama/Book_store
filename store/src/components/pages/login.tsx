@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { IStatus } from "../../assets/interfaces.ts";
+import GlobalContext from "../../context/GlobalState.tsx";
 import { signinService } from "../../services/user.ts";
 import { Layout } from "../templates/layout.tsx";
 
 export const Login = () => {
+	const { dispatch } = useContext(GlobalContext);
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -28,6 +30,10 @@ export const Login = () => {
 
 			if (response.status === 200) {
 				setStatus({ status: "OK" });
+				dispatch({
+					type: "SET_USER",
+					payload: { name: response.name, address: response.address, email: response.email, image: response.image, token: response.token },
+				});
 			} else {
 				setStatus({ status: "ERROR" });
 			}

@@ -3,10 +3,11 @@ export interface User {
 	email: string;
 	image: string;
 	address: string;
+	token: string;
 }
 
 export interface Book {
-	id: string;
+	isbn: string;
 	title: string;
 	price: number;
 	author: string;
@@ -17,4 +18,9 @@ export interface Book {
 
 export interface IStatus {
 	status: null | "OK" | "ERROR";
+}
+
+export interface GlobalState {
+	user: User | null;
+	isLoading: boolean;
 }

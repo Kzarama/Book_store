@@ -1,7 +1,6 @@
-from flask import Flask, request, Response, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
-import base64
 
 app = Flask(__name__)
 
@@ -13,11 +12,18 @@ def signin():
     email = request.get_json()["email"]
     password = request.get_json()["password"]
     if email == "test@gmail.com" and password == "123456":
-        return Response('{"token": "qwerty", "status": 200}', status=200)
+        response_data = {
+            "message": "Inicio correcto",
+            "status": 200,
+            "token": "123456",
+        }
+        return jsonify(response_data), 200
     else:
-        return Response(
-            '{"message": "Credenciales incorrectas", "status": 401}', status=401
-        )
+        response_data = {
+            "message": "Credential incorrectas",
+            "status": 401,
+        }
+        return jsonify(response_data), 401
 
 
 @app.route("/signup", methods=["POST"])
@@ -39,7 +45,7 @@ def signup():
         },
     }
 
-    return Response(json.dumps(response_data), status=201)
+    return jsonify(response_data), 201
 
 
 @app.route("/get_user/<string:email>")
@@ -47,9 +53,7 @@ def get_user(email):
     with open("user.json", "r") as file:
         data = json.load(file)
 
-    json_data = json.dumps(data)
-
-    return Response(json_data, status=200)
+    return jsonify(data), 200
 
 
 @app.route("/update_address", methods=["POST"])
@@ -66,9 +70,9 @@ def update_address():
             },
         }
 
-        return Response(json.dumps(response_data), status=200)
+        return jsonify(response_data), 200
     else:
-        return Response("Error", status=401)
+        return "Error", 401
 
 
 def allowed_file(filename):
@@ -102,9 +106,7 @@ def get_books():
     with open("books.json", "r") as file:
         data = json.load(file)
 
-    json_data = json.dumps(data)
-
-    return Response(json_data, status=200)
+    return jsonify(data), 200
 
 
 @app.route("/register_book", methods=["POST"])
@@ -118,22 +120,45 @@ def register_book():
     image = request.get_json()["image"]
     quantity = request.get_json()["quantity"]
     if token == "qwerty":
-        return Response(
-            f"{isbn}, {title}, {price}, {author}, {editor}, {image}, {quantity} ok",
-            status=200,
+        return (
+            jsonify(
+                {
+                    "message": "Creado exitosamente",
+                    "data": {
+                        "isbn": isbn,
+                        "title": title,
+                        "price": price,
+                        "author": author,
+                        "editor": editor,
+                        "image": image,
+                        "quantity": quantity,
+                    },
+                }
+            ),
+            201,
         )
     else:
-        return Response("Error", status=401)
+        return "Error", 401
 
 
 @app.route("/sell_book", methods=["POST"])
 def sell_book():
     token = request.get_json()["token"]
     isbn = request.get_json()["isbn"]
+
     if token == "qwerty":
-        return Response(f"{isbn} sell", status=200)
+        response_data = {
+            "message": "Registro correcto",
+            "status": 201,
+            "token": "123456",
+            "data": {
+                "isbn": isbn,
+            },
+        }
+
+        return jsonify(response_data), 200
     else:
-        return Response("Error", status=401)
+        return "Error", 401
 
 
 if __name__ == "__main__":

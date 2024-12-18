@@ -45,8 +45,7 @@ export const getUserService = async (email: string): Promise<User | undefined> =
 	}
 };
 
-export const updateAddressService = async (email: string, address: string) => {
-	const token = "qwerty";
+export const updateAddressService = async (token: string, email: string, address: string) => {
 	try {
 		const response = await axios({
 			url: `${DEFAULT_ROUTE}/update_address`,
@@ -61,9 +60,7 @@ export const updateAddressService = async (email: string, address: string) => {
 	}
 };
 
-export const updatePhoto = async (file: File) => {
-	const token = "qwerty";
-
+export const updatePhoto = async (token: string, file: File) => {
 	const readerPromise = new Promise<string>((resolve, reject) => {
 		const reader = new FileReader();
 		reader.onloadend = () => {
