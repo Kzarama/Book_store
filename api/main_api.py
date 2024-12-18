@@ -124,6 +124,7 @@ def register_product():
             jsonify(
                 {
                     "message": "Creado exitosamente",
+                    "status": 201,
                     "data": {
                         "isbn": isbn,
                         "title": title,

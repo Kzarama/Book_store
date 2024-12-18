@@ -1,9 +1,7 @@
-@import "../../variables.css";
-
 .form {
 	background: var(--background);
 	width: fit-content;
-	max-width: 40vw;
+	max-width: 70vw;
 	height: fit-content;
 	margin: auto;
 	padding: 40px 20px;
@@ -14,6 +12,10 @@
 	align-items: center;
 	justify-content: center;
 	gap: 20px;
+
+	@media (min-width: 480px) {
+		max-width: 40vw;
+	}
 }
 
 .formContent {

@@ -1,6 +1,6 @@
 import { Cart } from "../../assets/interfaces";
 import { priceFormatter } from "../../assets/utils";
-import styles from "./cardCart.module.css";
+import styles from "../../styles/molecules/cardCart.module.css";
 
 export const CartCard = ({ product }: { product: Cart }) => {
 	return (

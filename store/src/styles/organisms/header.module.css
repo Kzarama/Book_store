@@ -1,12 +1,14 @@
-@import "../../variables.css";
-
 .header {
 	height: 70px;
-	padding: 0 40px;
+	padding: 0 20px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	background: var(--header);
+
+	@media (min-width: 480px) {
+		padding: 0 40px;
+	}
 }
 
 .header_logo {
@@ -26,5 +28,13 @@ a:-webkit-any-link {
 	color: rgb(184, 217, 252);
 }
 
-.header_items {
+.header_button {
+	background: none;
+	text-decoration: underline;
+	border: none;
+	color: rgb(184, 217, 252);
+	width: fit-content;
+	padding: 0;
+	font-size: 16px;
+	cursor: pointer;
 }

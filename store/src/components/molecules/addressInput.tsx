@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { IStatus } from "../../assets/interfaces";
-import { updateAddressService } from "../../services/user";
-import styles from "./addressInput.module.css";
 import GlobalContext from "../../context/GlobalState";
+import { updateAddressService } from "../../services/user";
+import styles from "../../styles/molecules/addressInput.module.css";
 
 export const AddressInput = ({ address }: { address: string | undefined }) => {
 	const [newAddress, setNewAddress] = useState<string | undefined>(undefined);

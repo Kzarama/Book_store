@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import styles from "./header.module.css";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import GlobalContext from "../../context/GlobalState";
+import styles from "../../styles/organisms/header.module.css";
 
 export const Header = () => {
 	const { state, dispatch } = useContext(GlobalContext);
@@ -18,9 +18,6 @@ export const Header = () => {
 			</Link>
 
 			<ul className={styles.header_links}>
-				<li className={styles.header_items}>
-					<Link to="/">Home</Link>
-				</li>
 				{state.user ? (
 					<>
 						<li>
@@ -37,7 +34,9 @@ export const Header = () => {
 				)}
 				{state.user && (
 					<li>
-						<button onClick={logout}>Cerrar sesion</button>
+						<button className={styles.header_button} onClick={logout}>
+							Cerrar sesion
+						</button>
 					</li>
 				)}
 			</ul>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Product } from "../../assets/interfaces.ts";
 import { getProductsService } from "../../services/product.ts";
+import styles from "../../styles/organisms/productList.module.css";
 import { ProductCard } from "../molecules/productCard.tsx";
-import styles from "./productList.module.css";
 
 function ProductsList() {
 	const [products, setProducts] = useState<Product[] | undefined>(undefined);

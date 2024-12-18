@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { User } from "../../assets/interfaces";
 import GlobalContext from "../../context/GlobalState";
 import { updatePhoto } from "../../services/user";
-import styles from "./userPhoto.module.css";
+import styles from "../../styles/molecules/userPhoto.module.css";
 
 export const UserPhoto = ({ userData }: { userData: User | undefined }) => {
 	const fileInputRef = useRef<HTMLInputElement | null>(null);

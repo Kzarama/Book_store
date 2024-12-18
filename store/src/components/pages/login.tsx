@@ -1,67 +1,18 @@
-import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { IStatus } from "../../assets/interfaces.ts";
-import GlobalContext from "../../context/GlobalState.tsx";
-import { signinService } from "../../services/user.ts";
+import { LoginForm } from "../organisms/loginForm.tsx";
 import { Layout } from "../templates/layout.tsx";
+import styles from "../../styles/pages/login.module.css";
 
 export const Login = () => {
-	const { dispatch } = useContext(GlobalContext);
-	const [formData, setFormData] = useState({
-		email: "",
-		password: "",
-	});
-
-	const [status, setStatus] = useState<IStatus>();
-
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setFormData({
-			...formData,
-			[name]: value,
-		});
-	};
-
-	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-
-		try {
-			const response = await signinService(formData.email, formData.password);
-
-			if (response.status === 200) {
-				setStatus({ status: "OK" });
-				dispatch({
-					type: "SET_USER",
-					payload: { name: response.name, address: response.address, email: response.email, image: response.image, token: response.token },
-				});
-			} else {
-				setStatus({ status: "ERROR" });
-			}
-		} catch (error) {
-			setStatus({ status: "ERROR" });
-		}
-	};
-
 	return (
 		<Layout>
-			<h2>Formulario</h2>
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="email">Nombre:</label>
-					<input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
-				</div>
-				<div>
-					<label htmlFor="password">Email:</label>
-					<input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
-				</div>
-				<button type="submit">Enviar</button>
-			</form>
+			<div className={styles.login}>
+				<h1>Formulario</h1>
 
-			{status && (
-				<div>{status.status === "OK" ? <p style={{ color: "green" }}>{status.status}</p> : <p style={{ color: "red" }}>{status.status}</p>}</div>
-			)}
+				<LoginForm />
 
-			<Link to="/register">Registro</Link>
+				<Link to="/register">Registro</Link>
+			</div>
 		</Layout>
 	);
 };

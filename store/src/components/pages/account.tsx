@@ -1,19 +1,25 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { User } from "../../assets/interfaces.ts";
+import GlobalContext from "../../context/GlobalState.tsx";
 import { getUserService } from "../../services/user.ts";
+import styles from "../../styles/pages/account.module.css";
 import { AddressInput } from "../molecules/addressInput.tsx";
 import { UserPhoto } from "../molecules/userPhoto.tsx";
 import { Layout } from "../templates/layout.tsx";
-import styles from "./account.module.css";
 
 export const Account = () => {
 	const [userData, setUserData] = useState<User>();
+	const { state } = useContext(GlobalContext);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		getUserService("email").then((user) => {
 			setUserData(user);
 		});
 	}, []);
+
+	if (!state.user) navigate("/");
 
 	return (
 		<Layout>

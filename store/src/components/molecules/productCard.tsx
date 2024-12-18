@@ -4,15 +4,18 @@ import { Product } from "../../assets/interfaces.ts";
 import { priceFormatter } from "../../assets/utils.ts";
 import GlobalContext from "../../context/GlobalState.tsx";
 import { addCartService } from "../../services/product.ts";
+import styles from "../../styles/molecules/productCard.module.css";
 import { ButtonCard } from "../atoms/buttonCard.tsx";
 import { QuantitySelector } from "../atoms/quantitySelector.tsx";
-import styles from "./productCard.module.css";
 
 export const ProductCard = ({ product }: { product: Product }) => {
 	const [productQuantity, setProductQuantity] = useState(0);
 	const { state } = useContext(GlobalContext);
 
 	const buyProduct = () => {
+		if (productQuantity < 1) {
+			return;
+		}
 		if (productQuantity > product.quantity) {
 			toast.warn(`Solo hay ${product.quantity} productos en existencia`);
 		}

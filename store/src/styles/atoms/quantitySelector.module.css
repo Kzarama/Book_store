@@ -1,0 +1,7 @@
+.quantitySelector {
+	width: 60%;
+	background: var(--background);
+	color: white;
+	border: none;
+	font-size: 20px;
+}

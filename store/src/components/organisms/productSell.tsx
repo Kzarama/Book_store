@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import Modal from "react-modal";
 import GlobalContext from "../../context/GlobalState";
+import styles from "../../styles/organisms/productSell.module.css";
 import { ButtonCard } from "../atoms/buttonCard";
 import { SellForm } from "../molecules/sellForm";
-import styles from "./productSell.module.css";
 
 export const ProductSell = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);

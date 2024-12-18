@@ -3,9 +3,9 @@ import { toast } from "react-toastify";
 import { Product } from "../../assets/interfaces.ts";
 import GlobalContext from "../../context/GlobalState.tsx";
 import { createProductsService } from "../../services/product.ts";
+import styles from "../../styles/molecules/sellForm.module.css";
 import { ButtonCard } from "../atoms/buttonCard.tsx";
 import { FormInput } from "../atoms/formInput.tsx";
-import styles from "./sellForm.module.css";
 
 export const SellForm = ({ closeModal }: { closeModal: () => void }) => {
 	const [formData, setFormData] = useState<Product>({ isbn: "", title: "", price: 0, author: "", editor: "", image: "", quantity: 0 });
@@ -22,6 +22,12 @@ export const SellForm = ({ closeModal }: { closeModal: () => void }) => {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
+		const isAnyEmpty = Object.values(formData).some((value) => value === "");
+
+		if (isAnyEmpty) {
+			return toast.error("Debes llenar todos los campos");
+		}
+
 		if (state.user?.token) {
 			createProductsService(
 				state.user.token,
@@ -32,9 +38,11 @@ export const SellForm = ({ closeModal }: { closeModal: () => void }) => {
 				formData?.editor,
 				formData?.image,
 				formData?.quantity
-			).then(() => {
-				toast.success("Producto creado");
-				closeModal();
+			).then((response) => {
+				if (response.status === 201) {
+					toast.success("Producto creado");
+					closeModal();
+				}
 			});
 		}
 	};
@@ -44,14 +52,15 @@ export const SellForm = ({ closeModal }: { closeModal: () => void }) => {
 			<div className={styles.formContent}>
 				<FormInput name="isbn" label="Isbn: " type="text" change={handleChange} />
 				<FormInput name="title" label="Titulo: " type="text" change={handleChange} />
-				<FormInput name="price" label="Precio: " type="text" change={handleChange} />
+				<FormInput name="price" label="Precio: " type="number" change={handleChange} />
 				<FormInput name="author" label="Autor: " type="text" change={handleChange} />
 				<FormInput name="editor" label="Editor: " type="text" change={handleChange} />
 				<FormInput name="image" label="Imagen: " type="text" change={handleChange} />
-				<FormInput name="quantity" label="Cantidad: " type="text" change={handleChange} />
+				<FormInput name="quantity" label="Cantidad: " type="number" change={handleChange} />
 			</div>
 
 			<ButtonCard text="Vender producto" type="submit" />
+			<ButtonCard text="Cancelar" action={closeModal} />
 		</form>
 	);
 };

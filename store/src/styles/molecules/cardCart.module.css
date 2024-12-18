@@ -1,0 +1,9 @@
+h2,
+span {
+	white-space: wrap;
+	font-size: 12px;
+
+	@media (min-width: 480px) {
+		font-size: 16px;
+	}
+}

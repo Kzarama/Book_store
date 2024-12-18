@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Cart } from "../../assets/interfaces.ts";
 import GlobalContext from "../../context/GlobalState.tsx";
 import { buyCartService, getCartService } from "../../services/cart.ts";
 import { ButtonCard } from "../atoms/buttonCard";
 import { CartCard } from "../molecules/cartCard.tsx";
-import styles from "./cartList.module.css";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import styles from "../../styles/organisms/cartList.module.css";
 
-function CartList() {
+export const CartList = () => {
 	const { state } = useContext(GlobalContext);
 	const [products, setProducts] = useState<Cart[] | undefined>(undefined);
 	const navigate = useNavigate();
@@ -55,6 +55,4 @@ function CartList() {
 			<ButtonCard text="Comprar" action={buyCart} />
 		</div>
 	);
-}
-
-export default CartList;
+};

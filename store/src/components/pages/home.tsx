@@ -1,7 +1,7 @@
-import { ProductSell } from "../organisms/productSell.tsx";
+import styles from "../../styles/pages/home.module.css";
 import ProductsList from "../organisms/productList.tsx";
+import { ProductSell } from "../organisms/productSell.tsx";
 import { Layout } from "../templates/layout.tsx";
-import styles from "./home.module.css";
 
 export const Home = () => {
 	return (
