@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { Layout } from "../templates/layout.tsx";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { IStatus } from "../../assets/interfaces.ts";
 import { signupService } from "../../services/user.ts";
-import { Link, redirect, useNavigate } from "react-router-dom";
-
-interface status {
-	status: null | "OK" | "ERROR";
-}
+import { Layout } from "../templates/layout.tsx";
 
 export const Register = () => {
 	const navigate = useNavigate();
@@ -16,9 +13,9 @@ export const Register = () => {
 		password: "",
 	});
 
-	const [status, setStatus] = useState<status>();
+	const [status, setStatus] = useState<IStatus>();
 
-	const handleChange = (e) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setFormData({
 			...formData,
@@ -26,7 +23,7 @@ export const Register = () => {
 		});
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		try {

@@ -1,0 +1,15 @@
+.button {
+	border: none;
+	box-shadow: none;
+	color: rgb(0, 0, 0);
+	background: #559cfe;
+	font-weight: 900;
+	font-size: 17px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.button:hover {
+	scale: 1.2;
+}

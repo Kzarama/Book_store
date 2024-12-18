@@ -1,0 +1,30 @@
+@import "../../variables.css";
+
+.header {
+	height: 70px;
+	padding: 0 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: var(--header);
+}
+
+.header_logo {
+	width: 50px;
+	height: 50px;
+}
+
+.header_links {
+	list-style: none;
+	display: flex;
+	margin: 0;
+	padding: 0;
+	gap: 20px;
+}
+
+a:-webkit-any-link {
+	color: rgb(184, 217, 252);
+}
+
+.header_items {
+}

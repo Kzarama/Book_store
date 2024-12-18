@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { Layout } from "../templates/layout.tsx";
-import { signinService } from "../../services/user.ts";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
-interface status {
-	status: null | "OK" | "ERROR";
-}
+import { IStatus } from "../../assets/interfaces.ts";
+import { signinService } from "../../services/user.ts";
+import { Layout } from "../templates/layout.tsx";
 
 export const Login = () => {
 	const [formData, setFormData] = useState({
@@ -13,9 +10,9 @@ export const Login = () => {
 		password: "",
 	});
 
-	const [status, setStatus] = useState<status>();
+	const [status, setStatus] = useState<IStatus>();
 
-	const handleChange = (e) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setFormData({
 			...formData,
@@ -23,7 +20,7 @@ export const Login = () => {
 		});
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		try {
