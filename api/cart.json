@@ -1,0 +1,4 @@
+[
+	{ "product": "La casa de las sombras", "quantity": 2, "price": 18000, "image": "https://picsum.photos/id/24/100/100.jpg" },
+	{ "product": "Carcoma", "quantity": 1, "price": 17000, "image": "https://picsum.photos/id/31/100/100.jpg" }
+]

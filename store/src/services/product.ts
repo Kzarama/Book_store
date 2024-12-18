@@ -1,11 +1,11 @@
 import axios from "axios";
 import { DEFAULT_ROUTE } from "../assets/constants.ts";
-import { Book } from "../assets/interfaces.ts";
+import { Product } from "../assets/interfaces.ts";
 
-export const getBooksService = async (): Promise<Book[] | undefined> => {
+export const getProductsService = async (): Promise<Product[] | undefined> => {
 	try {
 		const response = await axios({
-			url: `${DEFAULT_ROUTE}/get_books`,
+			url: `${DEFAULT_ROUTE}/get_products`,
 		});
 		if (response?.data) {
 			return response.data;
@@ -15,7 +15,7 @@ export const getBooksService = async (): Promise<Book[] | undefined> => {
 	}
 };
 
-export const createBooksService = async (
+export const createProductsService = async (
 	token: string,
 	isbn: string,
 	title: string,
@@ -27,7 +27,7 @@ export const createBooksService = async (
 ) => {
 	try {
 		const response = await axios({
-			url: `${DEFAULT_ROUTE}/register_book`,
+			url: `${DEFAULT_ROUTE}/register_product`,
 			method: "POST",
 			data: { token, isbn, title, price, author, editor, image, quantity },
 		});
@@ -39,10 +39,10 @@ export const createBooksService = async (
 	}
 };
 
-export const buyBookService = async (token: string, isbn: string, quantity: number) => {
+export const addCartService = async (token: string, isbn: string, quantity: number) => {
 	try {
 		const response = await axios({
-			url: `${DEFAULT_ROUTE}/buy_book`,
+			url: `${DEFAULT_ROUTE}/add_cart`,
 			method: "POST",
 			data: { token, isbn, quantity },
 		});

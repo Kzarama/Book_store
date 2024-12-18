@@ -14,7 +14,7 @@ export const Header = () => {
 	return (
 		<nav className={styles.header}>
 			<Link to="/">
-				<img className={styles.header_logo} src="../../../book.webp" alt="book" />
+				<img className={styles.header_logo} src="../../../book.webp" alt="product" />
 			</Link>
 
 			<ul className={styles.header_links}>

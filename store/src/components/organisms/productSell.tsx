@@ -3,9 +3,9 @@ import Modal from "react-modal";
 import GlobalContext from "../../context/GlobalState";
 import { ButtonCard } from "../atoms/buttonCard";
 import { SellForm } from "../molecules/sellForm";
-import styles from "./bookSell.module.css";
+import styles from "./productSell.module.css";
 
-export const BookSell = () => {
+export const ProductSell = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { state } = useContext(GlobalContext);
 
@@ -23,7 +23,7 @@ export const BookSell = () => {
 
 	return (
 		<>
-			<ButtonCard text="Vender libro" action={openModal} />
+			<ButtonCard text="Vender producto" action={openModal} />
 			<Modal
 				className={styles.modal}
 				overlayClassName={styles.modal_overlay}

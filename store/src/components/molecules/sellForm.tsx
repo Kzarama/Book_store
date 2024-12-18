@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { Book } from "../../assets/interfaces.ts";
+import { Product } from "../../assets/interfaces.ts";
 import GlobalContext from "../../context/GlobalState.tsx";
-import { createBooksService } from "../../services/books.ts";
+import { createProductsService } from "../../services/product.ts";
 import { ButtonCard } from "../atoms/buttonCard.tsx";
 import { FormInput } from "../atoms/formInput.tsx";
 import styles from "./sellForm.module.css";
 
 export const SellForm = ({ closeModal }: { closeModal: () => void }) => {
-	const [formData, setFormData] = useState<Book>({ isbn: "", title: "", price: 0, author: "", editor: "", image: "", quantity: 0 });
+	const [formData, setFormData] = useState<Product>({ isbn: "", title: "", price: 0, author: "", editor: "", image: "", quantity: 0 });
 	const { state } = useContext(GlobalContext);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +23,7 @@ export const SellForm = ({ closeModal }: { closeModal: () => void }) => {
 		e.preventDefault();
 
 		if (state.user?.token) {
-			createBooksService(
+			createProductsService(
 				state.user.token,
 				formData?.isbn,
 				formData?.title,
@@ -33,7 +33,7 @@ export const SellForm = ({ closeModal }: { closeModal: () => void }) => {
 				formData?.image,
 				formData?.quantity
 			).then(() => {
-				toast.success("Libro creado");
+				toast.success("Producto creado");
 				closeModal();
 			});
 		}
@@ -51,7 +51,7 @@ export const SellForm = ({ closeModal }: { closeModal: () => void }) => {
 				<FormInput name="quantity" label="Cantidad: " type="text" change={handleChange} />
 			</div>
 
-			<ButtonCard text="Vender libro" type="submit" />
+			<ButtonCard text="Vender producto" type="submit" />
 		</form>
 	);
 };

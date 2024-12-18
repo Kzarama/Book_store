@@ -1,0 +1,23 @@
+.cardCart_image {
+	min-width: 20%;
+}
+
+.cardCart_product {
+	min-width: 40%;
+}
+
+.cardCart_price {
+	min-width: 20%;
+}
+
+.cardCart_quantity {
+	min-width: 20%;
+}
+
+h2,
+span {
+	max-width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

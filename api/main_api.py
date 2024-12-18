@@ -15,6 +15,7 @@ def signin():
         response_data = {
             "message": "Inicio correcto",
             "status": 200,
+            "email": email,
             "token": "qwerty",
         }
         return jsonify(response_data), 200
@@ -100,16 +101,16 @@ def update_photo():
         return jsonify({"error": f"Error al procesar el archivo: {str(e)}"}), 500
 
 
-@app.route("/get_books")
-def get_books():
+@app.route("/get_products")
+def get_products():
     with open("books.json", "r") as file:
         data = json.load(file)
 
     return jsonify(data), 200
 
 
-@app.route("/register_book", methods=["POST"])
-def register_book():
+@app.route("/register_product", methods=["POST"])
+def register_product():
     token = request.get_json()["token"]
     isbn = request.get_json()["isbn"]
     title = request.get_json()["title"]
@@ -140,8 +141,8 @@ def register_book():
         return "Error", 401
 
 
-@app.route("/buy_book", methods=["POST"])
-def buy_book():
+@app.route("/add_cart", methods=["POST"])
+def add_cart():
     token = request.get_json()["token"]
     isbn = request.get_json()["isbn"]
     quantity = request.get_json()["quantity"]
@@ -154,6 +155,28 @@ def buy_book():
                 "isbn": isbn,
                 "quantity": quantity,
             },
+        }
+
+        return jsonify(response_data), 200
+    else:
+        return "Error", 401
+
+
+@app.route("/get_cart/<string:email>")
+def get_cart(email):
+    with open("cart.json", "r") as file:
+        data = json.load(file)
+
+    return jsonify(data), 200
+
+
+@app.route("/buy_cart/<string:email>", methods=["POST"])
+def buy_cart(email):
+    token = request.get_json()["token"]
+    if token == "qwerty":
+        response_data = {
+            "message": "Compra correcta",
+            "status": 200,
         }
 
         return jsonify(response_data), 200

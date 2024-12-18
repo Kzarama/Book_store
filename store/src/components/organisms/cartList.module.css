@@ -1,0 +1,26 @@
+.cardList {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 30px;
+}
+
+.cardList_table {
+	border: 2px solid black;
+	width: 80%;
+	margin: auto;
+}
+
+th,
+td {
+	border: 1px solid black;
+	white-space: nowrap;
+	text-align: center;
+	padding: 5px;
+}
+
+button {
+	width: 200px;
+}
