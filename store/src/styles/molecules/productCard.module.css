@@ -27,7 +27,8 @@
 	margin: 5px;
 }
 
-.card_author {
+.card_details {
+	text-align: center;
 	margin: 5px;
 	display: -webkit-box;
 	line-clamp: 2;

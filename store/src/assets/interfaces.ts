@@ -7,12 +7,11 @@ export interface User {
 }
 
 export interface Product {
-	isbn: string;
+	idProduct: string;
 	title: string;
 	price: number;
-	author: string;
+	details: string;
 	image: string;
-	editor: string;
 	quantity: number;
 }
 

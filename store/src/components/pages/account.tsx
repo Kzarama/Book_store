@@ -26,8 +26,8 @@ export const Account = () => {
 			<div className={styles.account}>
 				<div>
 					<UserPhoto userData={userData} />
-					<h1 className={styles.name}>{userData?.name}</h1>
-					<h2>{userData?.email}</h2>
+					<h1 className={styles.account_name}>{userData?.name}</h1>
+					<h2 className={styles.account_email}>{userData?.email}</h2>
 				</div>
 				<AddressInput address={userData?.address} />
 			</div>

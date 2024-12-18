@@ -8,7 +8,7 @@ import { ButtonCard } from "../atoms/buttonCard.tsx";
 import { FormInput } from "../atoms/formInput.tsx";
 
 export const SellForm = ({ closeModal }: { closeModal: () => void }) => {
-	const [formData, setFormData] = useState<Product>({ isbn: "", title: "", price: 0, author: "", editor: "", image: "", quantity: 0 });
+	const [formData, setFormData] = useState<Product>({ idProduct: "", title: "", price: 0, details: "", image: "", quantity: 0 });
 	const { state } = useContext(GlobalContext);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,11 +31,10 @@ export const SellForm = ({ closeModal }: { closeModal: () => void }) => {
 		if (state.user?.token) {
 			createProductsService(
 				state.user.token,
-				formData?.isbn,
+				formData?.idProduct,
 				formData?.title,
 				formData?.price,
-				formData?.author,
-				formData?.editor,
+				formData?.details,
 				formData?.image,
 				formData?.quantity
 			).then((response) => {
@@ -50,11 +49,10 @@ export const SellForm = ({ closeModal }: { closeModal: () => void }) => {
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<div className={styles.formContent}>
-				<FormInput name="isbn" label="Isbn: " type="text" change={handleChange} />
+				<FormInput name="idProduct" label="Id product: " type="text" change={handleChange} />
 				<FormInput name="title" label="Titulo: " type="text" change={handleChange} />
 				<FormInput name="price" label="Precio: " type="number" change={handleChange} />
-				<FormInput name="author" label="Autor: " type="text" change={handleChange} />
-				<FormInput name="editor" label="Editor: " type="text" change={handleChange} />
+				<FormInput name="details" label="Detalles: " type="text" change={handleChange} />
 				<FormInput name="image" label="Imagen: " type="text" change={handleChange} />
 				<FormInput name="quantity" label="Cantidad: " type="number" change={handleChange} />
 			</div>

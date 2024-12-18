@@ -20,7 +20,9 @@ export const ProductCard = ({ product }: { product: Product }) => {
 			toast.warn(`Solo hay ${product.quantity} productos en existencia`);
 		}
 		if (state.user?.token) {
-			addCartService(state.user.token, product.isbn, productQuantity).then(() => toast.success("Productos agregados al carrito"));
+			addCartService(state.user.token, product.idProduct, productQuantity).then(() => toast.success("Productos agregados al carrito"));
+		} else {
+			toast.warn("Debes iniciar sesion para comprar");
 		}
 	};
 
@@ -28,7 +30,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
 		<div className={styles.card}>
 			<h3 className={styles.card_title}>{product.title}</h3>
 			<p className={styles.card_price}>{priceFormatter(product.price)}</p>
-			<p className={styles.card_author}>{product.author}</p>
+			<p className={styles.card_details}>{product.details}</p>
 			<img className={styles.card_image} src={product.image} alt={product.title} />
 			<QuantitySelector productQuantity={productQuantity} setProductQuantity={setProductQuantity} />
 			<ButtonCard text="Comprar" action={buyProduct} />

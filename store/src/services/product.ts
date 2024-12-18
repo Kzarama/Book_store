@@ -17,11 +17,10 @@ export const getProductsService = async (): Promise<Product[] | undefined> => {
 
 export const createProductsService = async (
 	token: string,
-	isbn: string,
+	idProduct: string,
 	title: string,
 	price: number,
-	author: string,
-	editor: string,
+	details: string,
 	image: string,
 	quantity: number
 ) => {
@@ -29,7 +28,7 @@ export const createProductsService = async (
 		const response = await axios({
 			url: `${DEFAULT_ROUTE}/register_product`,
 			method: "POST",
-			data: { token, isbn, title, price, author, editor, image, quantity },
+			data: { token, idProduct, title, price, details, image, quantity },
 		});
 		if (response?.data) {
 			return response.data;
@@ -39,12 +38,12 @@ export const createProductsService = async (
 	}
 };
 
-export const addCartService = async (token: string, isbn: string, quantity: number) => {
+export const addCartService = async (token: string, idProduct: string, quantity: number) => {
 	try {
 		const response = await axios({
 			url: `${DEFAULT_ROUTE}/add_cart`,
 			method: "POST",
-			data: { token, isbn, quantity },
+			data: { token, idProduct, quantity },
 		});
 		if (response?.data) {
 			return response.data;

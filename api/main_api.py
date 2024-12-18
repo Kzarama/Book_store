@@ -103,7 +103,7 @@ def update_photo():
 
 @app.route("/get_products")
 def get_products():
-    with open("books.json", "r") as file:
+    with open("products.json", "r") as file:
         data = json.load(file)
 
     return jsonify(data), 200
@@ -112,11 +112,10 @@ def get_products():
 @app.route("/register_product", methods=["POST"])
 def register_product():
     token = request.get_json()["token"]
-    isbn = request.get_json()["isbn"]
+    idProduct = request.get_json()["idProduct"]
     title = request.get_json()["title"]
     price = request.get_json()["price"]
-    author = request.get_json()["author"]
-    editor = request.get_json()["editor"]
+    details = request.get_json()["details"]
     image = request.get_json()["image"]
     quantity = request.get_json()["quantity"]
     if token == "qwerty":
@@ -126,11 +125,10 @@ def register_product():
                     "message": "Creado exitosamente",
                     "status": 201,
                     "data": {
-                        "isbn": isbn,
+                        "idProduct": idProduct,
                         "title": title,
                         "price": price,
-                        "author": author,
-                        "editor": editor,
+                        "details": details,
                         "image": image,
                         "quantity": quantity,
                     },
@@ -145,7 +143,7 @@ def register_product():
 @app.route("/add_cart", methods=["POST"])
 def add_cart():
     token = request.get_json()["token"]
-    isbn = request.get_json()["isbn"]
+    idProduct = request.get_json()["idProduct"]
     quantity = request.get_json()["quantity"]
 
     if token == "qwerty":
@@ -153,7 +151,7 @@ def add_cart():
             "message": "Compra correcta",
             "status": 200,
             "data": {
-                "isbn": isbn,
+                "idProduct": idProduct,
                 "quantity": quantity,
             },
         }

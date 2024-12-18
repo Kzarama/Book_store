@@ -6,6 +6,7 @@
 	gap: 10px;
 }
 
-.name {
+.account_name,
+.account_email {
 	text-align: center;
 }

@@ -16,7 +16,7 @@ function ProductsList() {
 	return (
 		<div className={styles.productsList_content}>
 			{products?.map((product) => (
-				<ProductCard key={product.isbn} product={product} />
+				<ProductCard key={product.idProduct} product={product} />
 			))}
 		</div>
 	);

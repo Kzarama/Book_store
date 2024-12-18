@@ -1,91 +1,81 @@
 [
 	{
-		"isbn": 1,
+		"idProduct": 1,
 		"title": "La casa de las sombras",
 		"price": 18000,
-		"author": "Adam Nevill",
-		"editor": "Minotauro",
+		"details": "Autor: Adam Nevill - Editor: Minotauro",
 		"image": "https://picsum.photos/id/24/100/100.jpg",
 		"quantity": 200
 	},
 	{
-		"isbn": 2,
+		"idProduct": 2,
 		"title": "Tragedia en villa Rosato: Hay lugares que nunca dejamos atrás",
 		"price": 17000,
-		"author": "Rachel Hawkins",
-		"editor": "Umbriel",
+		"details": "Autor: Rachel Hawkins - Editor: Umbriel",
 		"image": "https://picsum.photos/id/2/100/100.jpg",
 		"quantity": 213
 	},
 	{
-		"isbn": 3,
+		"idProduct": 3,
 		"title": "Dispersión",
 		"price": 9000,
-		"author": "Iain Reid",
-		"editor": "AdN",
+		"details": "Autor: Iain Reid - Editor: AdN",
 		"image": "https://picsum.photos/id/67/100/100.jpg",
 		"quantity": 12
 	},
 	{
-		"isbn": 4,
+		"idProduct": 4,
 		"title": "Mi esposa y yo compramos un rancho",
 		"price": 19000,
-		"author": "Matthew y Harrison Query",
-		"editor": "Planeta",
+		"details": "Autor: Matthew y Harrison Query - Editor: Planeta",
 		"image": "https://picsum.photos/id/96/100/100.jpg",
 		"quantity": 12
 	},
 	{
-		"isbn": 5,
+		"idProduct": 5,
 		"title": "Altar",
 		"price": 31000,
-		"author": "Catherine Lacey",
-		"editor": "Alfaguara",
+		"details": "Autor: Catherine Lacey - Editor: Alfaguara",
 		"image": "https://picsum.photos/id/213/100/100.jpg",
 		"quantity": 1
 	},
 	{
-		"isbn": 6,
+		"idProduct": 6,
 		"title": "Los 13 exorcismos de Salomon Joch",
 		"price": 10000,
-		"author": "Paul Arquier-Parayre",
-		"editor": "Obscura",
+		"details": "Autor: Paul Arquier-Parayre - Editor: Obscura",
 		"image": "https://picsum.photos/id/51/100/100.jpg",
 		"quantity": 320
 	},
 	{
-		"isbn": 7,
+		"idProduct": 7,
 		"title": "Carcoma",
 		"price": 17000,
-		"author": "Layla Martínez",
-		"editor": "Amor de madre",
+		"details": "Autor: Layla Martínez - Editor: Amor de madre",
 		"image": "https://picsum.photos/id/31/100/100.jpg",
 		"quantity": 2
 	},
 	{
-		"isbn": 8,
+		"idProduct": 8,
 		"title": "La comemadre",
 		"price": 11000,
-		"author": "Roque Larraquy",
-		"editor": "Fulgencio y Pimentel",
+		"details": "Autor: Roque Larraquy - Editor: Fulgencio y Pimentel",
 		"image": "https://picsum.photos/id/724/100/100.jpg",
 		"quantity": 3
 	},
 	{
-		"isbn": 9,
+		"idProduct": 9,
 		"title": "El regalo",
 		"price": 18000,
-		"author": "Zoe Maeve",
-		"editor": "Alpha Cómic",
+		"details": "Autor: Zoe Maeve - Editor: Alpha Cómic",
 		"image": "https://picsum.photos/id/241/100/100.jpg",
 		"quantity": 31
 	},
 	{
-		"isbn": 10,
+		"idProduct": 10,
 		"title": "La invitada",
 		"price": 20000,
-		"author": "Jennifer McMahon",
-		"editor": "Destino",
+		"details": "Autor: Jennifer McMahon - Editor: Destino",
 		"image": "https://picsum.photos/id/82/100/100.jpg",
 		"quantity": 55
 	}
