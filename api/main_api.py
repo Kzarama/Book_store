@@ -63,7 +63,12 @@ def update_photo():
 
 @app.route("/get_books")
 def get_books():
-    return Response("book", status=200)
+    with open("books.json", "r") as file:
+        data = json.load(file)
+
+    json_data = json.dumps(data)
+
+    return Response(json_data, status=200)
 
 
 @app.route("/register_book", methods=["POST"])
