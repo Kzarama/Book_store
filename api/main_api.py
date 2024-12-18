@@ -15,7 +15,7 @@ def signin():
         response_data = {
             "message": "Inicio correcto",
             "status": 200,
-            "token": "123456",
+            "token": "qwerty",
         }
         return jsonify(response_data), 200
     else:
@@ -37,7 +37,7 @@ def signup():
     response_data = {
         "message": "Registro correcto",
         "status": 201,
-        "token": "123456",
+        "token": "qwerty",
         "data": {
             "name": name,
             "email": email,
@@ -61,7 +61,6 @@ def update_address():
     token = request.get_json()["token"]
     address = request.get_json()["address"]
     if token == "qwerty":
-
         response_data = {
             "message": "Registro correcto",
             "status": 200,
@@ -141,18 +140,19 @@ def register_book():
         return "Error", 401
 
 
-@app.route("/sell_book", methods=["POST"])
-def sell_book():
+@app.route("/buy_book", methods=["POST"])
+def buy_book():
     token = request.get_json()["token"]
     isbn = request.get_json()["isbn"]
+    quantity = request.get_json()["quantity"]
 
     if token == "qwerty":
         response_data = {
-            "message": "Registro correcto",
-            "status": 201,
-            "token": "123456",
+            "message": "Compra correcta",
+            "status": 200,
             "data": {
                 "isbn": isbn,
+                "quantity": quantity,
             },
         }
 

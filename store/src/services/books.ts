@@ -38,3 +38,18 @@ export const createBooksService = async (
 		return error.response.data;
 	}
 };
+
+export const buyBookService = async (token: string, isbn: string, quantity: number) => {
+	try {
+		const response = await axios({
+			url: `${DEFAULT_ROUTE}/buy_book`,
+			method: "POST",
+			data: { token, isbn, quantity },
+		});
+		if (response?.data) {
+			return response.data;
+		}
+	} catch (error: any) {
+		return error.response.data;
+	}
+};

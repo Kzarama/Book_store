@@ -16,7 +16,7 @@ function BooksList() {
 	return (
 		<div className={styles.booksList_content}>
 			{books?.map((book) => (
-				<BookCard key={book.id} book={book} />
+				<BookCard key={book.isbn} book={book} />
 			))}
 		</div>
 	);
